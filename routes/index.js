@@ -7,8 +7,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/fetch', fetchController.index);
-
-
+router.get('/fetch', fetchController.fetch);
 
 module.exports = router;
