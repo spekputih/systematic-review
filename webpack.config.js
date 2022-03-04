@@ -9,7 +9,7 @@ module.exports = {
         filename: '[name].bundle.js',
         
     },
-    mode: 'production',
+    mode: 'development',
     module: {
         rules: [
           {
@@ -23,7 +23,8 @@ module.exports = {
             }
           }
         ]
-      }
+      },
+      
 }
 
 

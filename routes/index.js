@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var fetchController = require('../controllers/fetchController');
+var homeController = require('../controllers/homeController');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', homeController.home);
 
+// GET fetch information from targeted website
 router.get('/fetch', fetchController.fetch);
 
 module.exports = router;
