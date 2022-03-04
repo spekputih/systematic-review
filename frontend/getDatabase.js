@@ -16,7 +16,7 @@ export default class FetchDatabase {
   }
   fetchDatabase() {
     // fetch the data from server
-    fetch("http://localhost:3000/fetch")
+    fetch("/fetch")
       .then((response) => response.json())
       .then((data) => {
         this.resultCountEl.innerHTML = data.resultCount
