@@ -4,6 +4,7 @@ export default class FetchDatabase {
   constructor() {
     this.databaseBody = document.querySelector(".database-body");
     this.buttonGetData = document.querySelector('#getWebScrapingData')
+    this.resultCountEl = document.querySelector('#resultCount')
     this.event();
   }
   event() {
@@ -18,7 +19,8 @@ export default class FetchDatabase {
     fetch("http://localhost:3000/fetch")
       .then((response) => response.json())
       .then((data) => {
-        this.insertHtml(data.data, data.journals, data.publishedDates)
+        this.resultCountEl.innerHTML = data.resultCount
+        this.insertHtml(data.data)
       })
       .catch((err) => {
         console.log(err);
@@ -27,7 +29,8 @@ export default class FetchDatabase {
     this.insertHtml();
   }
 
-  insertHtml(data, journals, dates) {
+  insertHtml(data) {
+    
     if (data.length > 0) {
     data.forEach((el, index)=>{
         
@@ -36,10 +39,10 @@ export default class FetchDatabase {
           `
               <tr class="database-item" >
                   <th scope="row">${index+1}</th>
-                  <td>${ el }</td>
+                  <td>${ el.title }</td>
                   <td>Afiq</td>
-                  <td>${ journals[index] }</td>
-                  <td>${ dates[index] }</td>
+                  <td>${ el.journal }</td>
+                  <td>${ el.publishedDate }</td>
                   <td>Cited</td>
               </tr>
               `
